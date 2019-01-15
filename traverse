@@ -1,0 +1,220 @@
+package binaryTree;
+
+
+
+
+import java.lang.invoke.MutableCallSite;
+import java.util.List;
+
+public class BinaryTree<T extends Comparable<? super T>> implements BTree<T> {
+
+    private TreeNode<T> root; // the root node
+
+    /**
+     * Construct an empty tree.
+     */
+    public BinaryTree() {
+        root = null;
+    }
+
+    /**
+     * Construct a singleton tree.
+     * A singleton tree contains a value in the root, but the left and right subtrees are
+     * empty.
+     * @param value the value to be stored in the tree.
+     */
+    public BinaryTree(T value) {
+        root = new TreeNode(value);
+    }
+
+    /**
+     * Construct a tree with a root value, and left and right subtrees.
+     * @param value the value to be stored in the root of the tree.
+     * @param left the tree's left subtree.
+     * @param right the tree's right subtree.
+     */
+    public BinaryTree(T value,BinaryTree<T> left,BinaryTree<T> right) {
+        root = new TreeNode(value,left,right);
+    }
+
+    /**
+     * Check if the tree is empty.
+     * @return true iff the tree is empty.
+     */
+    @Override
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    /**
+     * Insert a new value in the binary tree at a position determined by the current contents
+     * of the tree, and by the ordering on the type T.
+     * @param value the value to be inserted into the tree.
+     */
+    @Override
+    public void insert(T value) throws Selectionerror {
+
+        if (isEmpty()) {
+            root = new TreeNode<T>(value);
+        } else if (value.compareTo(root.getValue()) < 0) {
+
+            root.left.insert(value);}
+            else{
+            root.right.insert(value);}
+
+        }
+
+
+
+
+
+
+
+    /**
+     * Get the value stored at the root of the tree.
+     * @return the value stored at the root of the tree.
+     */
+    @Override
+    public T getValue() throws Selectionerror{
+        if (isEmpty()) {
+            throw new Selectionerror("error: the tree is empty");
+        } else
+            return root.getValue();
+    }
+
+    /**
+     * Change the value stored at the root of the tree.
+     * @param value the new value to be stored at the root of the tree.
+     */
+    @Override
+    public void setValue(T value) throws Selectionerror{
+        if (isEmpty()) {
+            throw new Selectionerror("error: the tree is empty");
+        } else
+            root.setValue(value);
+        }
+
+    /**
+     * Get the left subtree of this tree.
+     * @return  This tree's left subtree.
+     */
+    @Override
+    public BTree<T> getLeft()throws Selectionerror {
+        if (isEmpty()) {
+            throw new Selectionerror("error: the tree is empty");
+        } else return root.getLeft();    }
+
+    /**
+     * Change the left subtree of this tree.
+     * @param tree the new left subtree.
+     */
+    @Override
+    public void setLeft(BTree<T> tree) throws Selectionerror{
+        if (isEmpty()) {
+            throw new Selectionerror("error: the tree is empty");
+        } else {
+            root.setLeft(tree);
+        }    }
+
+    /**
+     * Get the right subtree of this tree.
+     * @return this tree's right subtree.
+     */
+    @Override
+    public BTree<T> getRight() throws Selectionerror{
+        if (isEmpty()) {
+            throw new Selectionerror("error: the tree is empty");
+        } else return root.getRight();
+    }
+
+    /*
+     * Change the right subtree of this tree.
+     * @param tree the new right subtree.
+     */
+    @Override
+    public void setRight(BTree<T> tree) throws Selectionerror{
+        if (isEmpty()) {
+            throw new Selectionerror("error: the tree is empty");
+        } else {
+            root.setRight(tree);
+        }}
+
+    /**
+     * Check if the tree contains a given value.
+     * @param value the value to be checked.
+     * @return true iff the value is in the tree.
+     */
+    @Override
+    public boolean contains(T value) throws Selectionerror{
+        if (root == null) {
+            return false;
+        }
+
+        if (root.getValue() == value) {
+            return true;
+        }
+
+        if (root.getLeft() != null && root.getLeft() == value) {
+            return true;
+        }
+        if (root.getRight() != null && root.getRight() == value) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Traverse the tree, producing a list of all the values contained in the tree.
+     * @return a list of all the values in the tree.
+     */
+    @Override
+    public List<T> traverse() throws Selectionerror{
+        if (isEmpty()) {
+            throw new Selectionerror("error: the tree is empty"); }
+
+        traverse(BTree)
+
+
+
+
+    }
+
+    public void recursiveTraverse(BTree<T> currentTree) throws Selectionerror {
+
+
+        if (currentTree.isEmpty()) {
+            return;
+        }
+        list.add(root.getValue());
+        if (!currentTree.getLeft().isEmpty()) {
+            recursiveTraverse(root.getLeft());
+        }
+        if (!currentTree.getRight().isEmpty()) {
+            recursiveTraverse(root.getRight());
+        }
+        return list;
+    }
+    public static void main(String[] args) throws Selectionerror {
+
+        BinaryTree<Integer> multi = new BinaryTree<>();
+        multi.insert(3);
+        multi.insert(4);
+        multi.insert(1);
+        multi.insert(14);
+
+
+
+
+
+
+
+
+
+
+
+        System.out.println(multi.traverse());
+    }
+}
+
