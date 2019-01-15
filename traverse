@@ -183,7 +183,7 @@ public class BinaryTree<T extends Comparable<? super T>> implements BTree<T> {
 
     public void recursiveTraverse(BTree<T> currentTree) throws Selectionerror {
 
-
+        List<T> list =null;
         if (currentTree.isEmpty()) {
             return;
         }
@@ -194,7 +194,7 @@ public class BinaryTree<T extends Comparable<? super T>> implements BTree<T> {
         if (!currentTree.getRight().isEmpty()) {
             recursiveTraverse(root.getRight());
         }
-        return list;
+        
     }
     public static void main(String[] args) throws Selectionerror {
 
